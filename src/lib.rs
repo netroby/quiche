@@ -184,7 +184,7 @@ use std::collections::HashMap;
 pub const VERSION_DRAFT17: u32 = 0xff00_0011;
 
 /// The maximum length of a connection ID.
-pub const MAX_CONN_ID_LEN: usize = 18;
+pub const MAX_CONN_ID_LEN: u8 = 18;
 
 const CLIENT_INITIAL_MIN_LEN: usize = 1200;
 
@@ -1247,7 +1247,7 @@ impl Connection {
             let ack_delay = ack_delay.as_secs() * 1_000_000 +
                             u64::from(ack_delay.subsec_micros());
 
-            let ack_delay = 
+            let ack_delay =
                 ack_delay / 2_u64.pow(self.local_transport_params
                                           .ack_delay_exponent as u32);
 
